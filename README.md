@@ -79,7 +79,7 @@ Third Person View over a small island? With a certain manageable number of resou
 # Current Mock Ups
 ![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Cody%20mock%20up.JPG "Cody Mock Up")
 ## Original Top Down Design
-Created by Cody to demonstrate the general map design and the perspective of the player character to the island 
+Created by Cody to demonstrate the general map design and the perspective of the player character to the island, and resources
 
 ![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Andrews%20mark%20up.png "Blendr Mock Up")
 ## Blendr Mock Up
