@@ -1,5 +1,5 @@
 # Virtual Reality Project 2
-Team: Thomas Sanchez, Megan Taylor, Andrew Im
+Team: Thomas Sanchez, Megan Taylor, Andrew Im, Cody Otterbine
 
 # Project Assignment
 The watershed development and management game is envisioned as a "multiplayer" game modeled after the classic Monopoly and SimCity. Students are provided a fixed amount of coins and a distinct parcel of land (which is assigned randomly) on which they can either build or expand urban areas, grow crops or engage in industrial activities. All these activities release pollutants (biochemical oxygen demand (BOD) and nutrients) into streams and creeks. The release of these pollutants will affect the in-stream health which is measured by decreases in dissolved oxygen (DO) and increases in algae. Critical thresholds of DO and algae (chlorophyll-a) will be used to simulate catastrophic events such as fish kills and loss of riparian habitats. A set of compliance points (CP) are set up on the stream segment to monitor water quality in the stream. 
@@ -47,9 +47,9 @@ Third Person View over a small island? With a certain manageable number of resou
 * Mined, now a blank tile
 ### Building Tiles
 * Blank tiles can converted into any of the:
-..* Buildings/Houses, increases Population
-..* Energy Producer, increases Energy per turn
-..* Any resource tile
+* Buildings/Houses, increases Population
+* Energy Producer, increases Energy per turn
+* Any resource tile
 
 ## How to Manage Pollution
 ### Energy Focus
