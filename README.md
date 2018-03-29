@@ -74,3 +74,13 @@ Third Person View over a small island? With a certain manageable number of resou
 * Beach Clean up, Decreases Pollution
 * Water Treatment plants, decrease pollution
 * Fracking, increases pollution
+
+
+# Current Mock Ups
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Cody%20mock%20up.JPG "Cody Mock Up")
+## Original Top Down Design
+Created by Cody to demonstrate the general map design and the perspective of the player character to the island 
+
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Andrews%20mark%20up.png "Blendr Mock Up")
+## Blendr Mock Up
+Created by Andrew in Blendr based on Cody's Design, Adpoted a grid tile pattern to demonstrate the limited space and resources
