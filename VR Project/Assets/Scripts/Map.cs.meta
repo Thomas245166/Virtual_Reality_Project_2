@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7ac2b100f4dfda349b6668a24dc1a511
+timeCreated: 1522624668
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hexPreFab: {fileID: 1747970835890894, guid: 7d9f49eaaeae82d43b01f82a323dd3f4,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
