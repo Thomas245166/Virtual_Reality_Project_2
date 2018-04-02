@@ -81,6 +81,6 @@ Third Person View over a small island? With a certain manageable number of resou
 ## Original Top Down Design
 Created by Cody to demonstrate the general map design and the perspective of the player character to the island, and resources
 
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Andrews%20mark%20up.png "Blendr Mock Up")
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Mock%20Up.png "Blendr Mock Up")
 ## Blendr Mock Up
 Created by Andrew in Blendr based on Cody's Design, Adpoted a grid tile pattern to demonstrate the limited space and resources
