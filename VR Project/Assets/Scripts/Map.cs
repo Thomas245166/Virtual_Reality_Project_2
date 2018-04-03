@@ -6,8 +6,8 @@ public class Map : MonoBehaviour {
 
     public GameObject hexPreFab;
 
-    int width = 10;
-    int height = 10;
+    int width = 11;
+    int height = 11;
 
     float XOffset = 0.882f;
     float ZOffset = 0.764f;
@@ -18,6 +18,7 @@ public class Map : MonoBehaviour {
         {
             for (int y = 0; y < height; y++)
             {
+             
                 float xPos = x*XOffset;
                 //Is the Row odd
                 if (y % 2==1)
@@ -25,7 +26,7 @@ public class Map : MonoBehaviour {
                     xPos +=XOffset/2f;
                 }
                  GameObject hex_go= (GameObject)Instantiate(hexPreFab, new Vector3(xPos,0,y*ZOffset), Quaternion.identity);
-
+             
                 //name
                 hex_go.name = "Hex_" + x + "_" + y;
                 //its position
@@ -34,8 +35,19 @@ public class Map : MonoBehaviour {
 
                 hex_go.transform.SetParent(this.transform);
                 hex_go.isStatic = true;
-              
-                
+
+                MeshRenderer ColorHex = hex_go.GetComponentInChildren<MeshRenderer>();
+                if (1<x && x< 9 && 1 < y && y < 9)
+                {              
+                    ColorHex.material.color = Color.green;
+                }
+                else
+                {
+                    ColorHex.material.color = Color.blue;
+                }
+               
+
+
             }
         }
             
