@@ -11,11 +11,12 @@ public class Unit : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         destination = transform.position;
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 dir = destination - transform.position;
+        Vector3 dir = destination-transform.position;
         Vector3 velocity = dir.normalized * speed * Time.deltaTime;
 
         //dont overshoot the target due to speed

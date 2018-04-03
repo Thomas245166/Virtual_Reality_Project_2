@@ -5,11 +5,15 @@ using UnityEngine;
 public class MouseManager : MonoBehaviour {
 
     Unit selectedUnit;
+    public float sec = 3f;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        
+
+    }
+   
+   
 
     // Update is called once per frame
     void Update() {
@@ -27,9 +31,11 @@ public class MouseManager : MonoBehaviour {
         {
             GameObject ourHitObject = hitInfo.collider.transform.parent.gameObject;
 
+            
             //Debug.Log("Clicked On: " + ourHitObject.name);
 
             // what selected
+
             if (ourHitObject.GetComponent<Hex>() != null)
             {
                 // Hex
@@ -49,25 +55,39 @@ public class MouseManager : MonoBehaviour {
 
 
     }
+    IEnumerator Stall(GameObject ourHitObject)
+    {
+        MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer>();
+        mr.material.color = Color.red;
+        yield return new WaitForSeconds(sec);
+        mr.material.color = Color.green;
+
+    }
 
     void MouseOver_Hex(GameObject ourHitObject)
     {
         Debug.Log("Raycast hit: " + ourHitObject.name);
+        MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer>();
 
 
         if (Input.GetMouseButtonDown(0))
         {
 
            //when clicked change the color
-            MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer>();
+            
 
             if (mr.material.color == Color.red)
             {
-                mr.material.color = Color.white;
+                mr.material.color = Color.green;
+                
+            }
+            else if (mr.material.color == Color.blue)
+            {
+               
             }
             else
             {
-                mr.material.color = Color.red;
+                StartCoroutine(Stall(ourHitObject));
             }
 
             //when the unit is selected move it to the tile that is clicked
