@@ -55,12 +55,22 @@ public class MouseManager : MonoBehaviour {
 
 
     }
-    IEnumerator Stall(GameObject ourHitObject)
+
+    IEnumerator GrassStall(GameObject ourHitObject)
     {
         MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer>();
         mr.material.color = Color.red;
         yield return new WaitForSeconds(sec);
         mr.material.color = Color.green;
+
+    }
+
+    IEnumerator WaterStall(GameObject ourHitObject)
+    {
+        MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer>();
+        mr.material.color = Color.red;
+        yield return new WaitForSeconds(sec);
+        mr.material.color = Color.blue;
 
     }
 
@@ -83,11 +93,11 @@ public class MouseManager : MonoBehaviour {
             }
             else if (mr.material.color == Color.blue)
             {
-               
+                StartCoroutine(WaterStall(ourHitObject));
             }
             else
             {
-                StartCoroutine(Stall(ourHitObject));
+                StartCoroutine(GrassStall(ourHitObject));
             }
 
             //when the unit is selected move it to the tile that is clicked
