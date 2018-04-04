@@ -6,11 +6,27 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: sheep_001
+    100004: sheep_002
+    100006: sheep_003
     400000: //RootNode
+    400002: sheep_001
+    400004: sheep_002
+    400006: sheep_003
     2100000: None__PUSHILIN_sheep_png
+    2100002: None_001__PUSHILIN_sheep_png_001
     2300000: //RootNode
+    2300002: sheep_001
+    2300004: sheep_002
+    2300006: sheep_003
     3300000: //RootNode
+    3300002: sheep_001
+    3300004: sheep_002
+    3300006: sheep_003
     4300000: sheep
+    4300002: sheep_003
+    4300004: sheep_002
+    4300006: sheep_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
