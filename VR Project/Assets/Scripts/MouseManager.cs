@@ -116,7 +116,7 @@ public class MouseManager : MonoBehaviour {
 
     void MouseOver_Unit(GameObject ourHitObject)
     {
-        Debug.Log("Raycast hit: " + ourHitObject.name);
+        //Debug.Log("Raycast hit: " + ourHitObject.name);
 
         if (Input.GetMouseButtonDown(0))
         {

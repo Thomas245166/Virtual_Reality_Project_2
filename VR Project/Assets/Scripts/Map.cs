@@ -9,11 +9,24 @@ using System.Threading;
 
 public class Map : MonoBehaviour {
 
+	public int Wood = 0;
+	public int Food = 0;
+	public int Water = 0;
+	public int Minerals = 0;
+	public int Energy = 100;
+
 	public GameObject hexPreFab;
 	public GameObject mountainPreFab;
 	public GameObject cityPreFab;
 	public GameObject forestPreFab;
 	public GameObject sheepPreFab;
+
+	private int SheepCount = 20; 
+	private int CityCount = 1;
+	private int MountainCount = 15;
+	private int ForestCount = 25;
+
+
 	private const int DELAY = 5000;
 
 	private static int width = 20;
@@ -22,16 +35,25 @@ public class Map : MonoBehaviour {
 	private static float XOffset = 0.882f;
     private static float ZOffset = 0.764f;
 
+
+	// contains int entries reflecting what is the tile:
+		// 0 - water, 1 - land, 2 - sheep, 3 - forest, 4 - mountains, 5 - city
 	private static int[,] mapType = new int[width,height];
+
+	// contains all the actual tiles, used for painting colors
 	private static GameObject[,] tiles = new GameObject[width,height];
+
+
+	// contains the current state of the tile at the [x,y] coordinate 
+	// states are either polluted or stable
 	private static string[,] map;
+
 
 	private static bool loopEdges = false;
 
     // Use this for initialization
     void Start () {
 		initializeRandomBoard ();
-
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				float xPos = x * XOffset;
@@ -77,7 +99,8 @@ public class Map : MonoBehaviour {
 		
 			}
 		}
-		MakeMoutains ();
+		MakeCity ();
+		MakeMoutain ();
 		MakeForest ();
 		MakeSheep ();
 	}
@@ -85,17 +108,50 @@ public class Map : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Run the game until the Escape key is pressed.
-		updateBoard();
+		if (Energy < 0){
+			updateBoard();
+			Energy = 100;
+		}
 		paintTiles ();
+		gatherResource ();
 		// Wait for a bit between updates.
 		//Thread.Sleep(DELAY);
 	}
 
-	public void MakeMoutains(){
+
+	public void gatherResource(){
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				if (map [x, y] == "Stable") {
+					if (mapType [x, y] == 2) {
+						Debug.Log (x + "," + y + ": FOOD");
+						Food += 10;
+						Debug.Log ("Current Food: "+Food);
+						Energy -= 5;
+					}
+					else if (mapType [x, y] == 3) {
+						Debug.Log (x + "," + y + ": WOOD");
+						Wood += 10;
+						Debug.Log ("Current Wood: "+Wood);
+						Energy -= 5;
+					} 
+					else if (mapType [x, y] == 4) {
+						Debug.Log (x + "," + y + ": Minerals");
+						Minerals += 10;
+						Debug.Log ("Current Minerals: " + Minerals);
+						Energy -= 5;
+					}
+				}
+			}
+		}
+	}
+
+
+	public void MakeMoutain(){
 		int count = 0;
-		while (count < 30){
-			int x = UnityEngine.Random.Range(0, 20);
-			int y = UnityEngine.Random.Range(0, 20);
+		while (count < MountainCount){
+			int x = UnityEngine.Random.Range(0, width);
+			int y = UnityEngine.Random.Range(0, height);
 			if (mapType [x, y] == 1) {
 				float xPos = x * XOffset;
 				//Is the Row odd
@@ -113,11 +169,33 @@ public class Map : MonoBehaviour {
 		}
 	}
 
+	public void MakeCity(){
+		int count = 0;
+		while (count < CityCount){
+			int x = UnityEngine.Random.Range(0, width);
+			int y = UnityEngine.Random.Range(0, height);
+			if (mapType [x, y] == 1) {
+				float xPos = x * XOffset;
+				//Is the Row odd
+				if (y % 2 == 1) {
+					xPos += XOffset / 2f;
+				}
+				GameObject city_go = (GameObject)Instantiate (cityPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
+				//transform.localScale -= new Vector3 (0.1F, 0, 0);
+				//name
+				city_go.name = "City_" + x + "_" + y;
+				city_go.transform.localScale -= new Vector3 (0.3F, 0.3F, 0.3F);
+				mapType [x, y] = 5;
+				count += 1;
+			}
+		}
+	}
+
 	public void MakeSheep(){
 		int count = 0;
-		while (count < 30){
-			int x = UnityEngine.Random.Range(0, 20);
-			int y = UnityEngine.Random.Range(0, 20);
+		while (count < SheepCount){
+			int x = UnityEngine.Random.Range(0, width);
+			int y = UnityEngine.Random.Range(0, height);
 			if (mapType [x, y] == 1) {
 				float xPos = x * XOffset;
 				//Is the Row odd
@@ -137,9 +215,9 @@ public class Map : MonoBehaviour {
 		
 	public void MakeForest(){
 		int count = 0;
-		while (count < 30){
-			int x = UnityEngine.Random.Range(0, 20);
-			int y = UnityEngine.Random.Range(0, 20);
+		while (count < ForestCount){
+			int x = UnityEngine.Random.Range(0, width);
+			int y = UnityEngine.Random.Range(0, height);
 			if (mapType [x, y] == 1) {
 				float xPos = x * XOffset;
 				//Is the Row odd
@@ -191,11 +269,11 @@ public class Map : MonoBehaviour {
 				// Equal probability of being true or false.
 				if (random.Next (2) == 0) {
 					map [x, y] = "Stable";
-					Debug.Log (x + "," + y + ": STABLE");
+					//Debug.Log (x + "," + y + ": STABLE");
 				} 
 				else {
 					map[x, y] = "Polluted";	
-					Debug.Log (x + "," + y + ": POLLUTED");
+					//Debug.Log (x + "," + y + ": POLLUTED");
 				}
 			}
 		}
@@ -215,8 +293,10 @@ public class Map : MonoBehaviour {
 				// A live cell dies unless it has exactly 2 or 3 live neighbors.
 				// A dead cell remains dead unless it has exactly 3 live neighbors.
 				if ((k == "Stable" && (n == 2 || n == 3)) || (k == "Polluted" && n == 3)) {
+					//Debug.Log ("THIS IS NOW STABLe: "+x+","+y);
 					newMap [x, y] = "Stable";
 				} else {
+					//Debug.Log ("THIS IS NOW POLLUTED: "+x+","+y);
 					newMap [x, y] = "Polluted";
 
 				}
