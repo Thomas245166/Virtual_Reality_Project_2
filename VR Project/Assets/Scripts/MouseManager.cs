@@ -6,6 +6,7 @@ public class MouseManager : MonoBehaviour {
 
     Unit selectedUnit;
     public float sec = 3f;
+	//int count = 0;
 
     // Use this for initialization
     void Start () {
@@ -74,9 +75,10 @@ public class MouseManager : MonoBehaviour {
 
     }
 
-    void MouseOver_Hex(GameObject ourHitObject)
-    {
-        Debug.Log("Raycast hit: " + ourHitObject.name);
+    void MouseOver_Hex(GameObject ourHitObject){
+		//Debug.Log (count);
+		//count++;
+		//Debug.Log("Raycast hit: " + ourHitObject.name);
         MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer>();
 
 
