@@ -10,6 +10,10 @@ using System.Threading;
 public class Map : MonoBehaviour {
 
 	public GameObject hexPreFab;
+	public GameObject mountainPreFab;
+	public GameObject cityPreFab;
+	public GameObject forestPreFab;
+	public GameObject sheepPreFab;
 	private const int DELAY = 5000;
 
 	private static int width = 20;
@@ -18,8 +22,8 @@ public class Map : MonoBehaviour {
 	private static float XOffset = 0.882f;
     private static float ZOffset = 0.764f;
 
+	private static int[,] mapType = new int[width,height];
 	private static GameObject[,] tiles = new GameObject[width,height];
-
 	private static string[,] map;
 
 	private static bool loopEdges = false;
@@ -27,6 +31,7 @@ public class Map : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		initializeRandomBoard ();
+
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				float xPos = x * XOffset;
@@ -35,11 +40,11 @@ public class Map : MonoBehaviour {
 					xPos += XOffset / 2f;
 				}
 				GameObject hex_go = (GameObject)Instantiate (hexPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
-             
+
 				//name
 				hex_go.name = "Hex_" + x + "_" + y;
-				//its position
 
+				//its position
 				hex_go.GetComponent<Hex> ().x = x;
 				hex_go.GetComponent<Hex> ().y = y;
 
@@ -47,25 +52,21 @@ public class Map : MonoBehaviour {
 				hex_go.isStatic = true;
 
 				tiles [x, y] = hex_go;
+
 				MeshRenderer ColorHex = hex_go.GetComponentInChildren<MeshRenderer> ();
+
 				if (2 < x && x < 17 && 2 < y && y < 17) { 
+					mapType [x, y] = 1;
 					if (map [x, y] == "Stable") {
 						ColorHex.material.color = Color.green;
 					}
 					if (map [x, y] == "Polluted") {
 						ColorHex.material.color = Color.yellow;
 					}
-
-					if (x == y || x - y == 1|| x-y == -1){
-						if (map [x, y] == "Stable") {
-							ColorHex.material.color = Color.cyan;
-						}
-						if (map [x, y] == "Polluted") {
-							ColorHex.material.color = Color.blue;
-						}
-					}
 				}
+
 				else {
+					mapType [x, y] = 0;
 					if (map [x, y] == "Stable") {
 						ColorHex.material.color = Color.cyan;
 					}
@@ -73,8 +74,12 @@ public class Map : MonoBehaviour {
 						ColorHex.material.color = Color.blue;
 					}
 				}
+		
 			}
-		}   
+		}
+		MakeMoutains ();
+		MakeForest ();
+		MakeSheep ();
 	}
 	
 	// Update is called once per frame
@@ -83,7 +88,73 @@ public class Map : MonoBehaviour {
 		updateBoard();
 		paintTiles ();
 		// Wait for a bit between updates.
-		Thread.Sleep(DELAY);
+		//Thread.Sleep(DELAY);
+	}
+
+	public void MakeMoutains(){
+		int count = 0;
+		while (count < 30){
+			int x = UnityEngine.Random.Range(0, 20);
+			int y = UnityEngine.Random.Range(0, 20);
+			if (mapType [x, y] == 1) {
+				float xPos = x * XOffset;
+				//Is the Row odd
+				if (y % 2 == 1) {
+					xPos += XOffset / 2f;
+				}
+				GameObject mountain_go = (GameObject)Instantiate (mountainPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
+				//transform.localScale -= new Vector3 (0.1F, 0, 0);
+				//name
+				mountain_go.name = "Mountain_" + x + "_" + y;
+				mountain_go.transform.localScale -= new Vector3 (0.9F, 0.9F, 0.8F);
+				mapType [x, y] = 4;
+				count += 1;
+			}
+		}
+	}
+
+	public void MakeSheep(){
+		int count = 0;
+		while (count < 30){
+			int x = UnityEngine.Random.Range(0, 20);
+			int y = UnityEngine.Random.Range(0, 20);
+			if (mapType [x, y] == 1) {
+				float xPos = x * XOffset;
+				//Is the Row odd
+				if (y % 2 == 1) {
+					xPos += XOffset / 2f;
+				}
+				GameObject sheep_go = (GameObject)Instantiate (sheepPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
+				//transform.localScale -= new Vector3 (0.1F, 0, 0);
+				//name
+				sheep_go.name = "Sheep_" + x + "_" + y;
+				sheep_go.transform.localScale -= new Vector3 (0.5F, 0.5F, 0.5F);
+				mapType [x, y] = 2;
+				count += 1;
+			}
+		}
+	}
+		
+	public void MakeForest(){
+		int count = 0;
+		while (count < 30){
+			int x = UnityEngine.Random.Range(0, 20);
+			int y = UnityEngine.Random.Range(0, 20);
+			if (mapType [x, y] == 1) {
+				float xPos = x * XOffset;
+				//Is the Row odd
+				if (y % 2 == 1) {
+					xPos += XOffset / 2f;
+				}
+				GameObject forest_go = (GameObject)Instantiate (forestPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
+				//transform.localScale -= new Vector3 (0.1F, 0, 0);
+				//name
+				forest_go.name = "Forest_" + x + "_" + y;
+				forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+				mapType [x, y] = 3;
+				count += 1;
+			}
+		}
 	}
 
 	private static void paintTiles(){
@@ -96,15 +167,6 @@ public class Map : MonoBehaviour {
 					}
 					if (map [x, y] == "Polluted") {
 						ColorHex.material.color = Color.yellow;
-					}
-
-					if (x == y || x - y == 1|| x-y == -1){
-						if (map [x, y] == "Stable") {
-							ColorHex.material.color = Color.cyan;
-						}
-						if (map [x, y] == "Polluted") {
-						ColorHex.material.color = Color.blue;
-						}
 					}
 				}
 				else {
