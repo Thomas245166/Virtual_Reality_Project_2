@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 using System.Text;
 using System.Threading;
-
-
+using UnityEngine.UI;
 
 public class Map : MonoBehaviour {
 
@@ -26,6 +25,7 @@ public class Map : MonoBehaviour {
 	private int MountainCount = 15;
 	private int ForestCount = 25;
 
+    public Slider EnergySlider;
 
 	private const int DELAY = 5000;
 
@@ -54,7 +54,7 @@ public class Map : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		initializeRandomBoard ();
-		for (int x = 0; x < width; x++) {
+        for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				float xPos = x * XOffset;
 				//Is the Row odd
@@ -103,7 +103,9 @@ public class Map : MonoBehaviour {
 		MakeMoutain ();
 		MakeForest ();
 		MakeSheep ();
-	}
+
+        EnergySlider = GameObject.Find("EnergySlider").GetComponent<Slider>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -114,6 +116,7 @@ public class Map : MonoBehaviour {
 		}
 		paintTiles ();
 		gatherResource ();
+        updateEnergy ();
 		// Wait for a bit between updates.
 		//Thread.Sleep(DELAY);
 	}
@@ -141,11 +144,17 @@ public class Map : MonoBehaviour {
 						Debug.Log ("Current Minerals: " + Minerals);
 						Energy -= 5;
 					}
-				}
+                    updateEnergy();
+                }
 			}
 		}
 	}
 
+    public void updateEnergy()
+    {
+        Debug.Log("ENERGY: " + EnergySlider.value);
+        this.EnergySlider.value = this.Energy;
+    }
 
 	public void MakeMoutain(){
 		int count = 0;
