@@ -1,14 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\VRTK\Scripts\Utilities\VRTK_Simulator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Map.cs">
     <Files>
-      <File FileName="Assets\Scripts\Map.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Map.cs" Line="294" Column="19" />
       <File FileName="Assets\Hex.cs" Line="1" Column="1" />
       <File FileName="Assets\Unit.cs" Line="1" Column="1" />
       <File FileName="Assets\Mountain.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MouseManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\GoogleVR\Scripts\InstantPreview\InstantPreviewHelper.cs" Line="1" Column="1" />
-      <File FileName="Assets\VRTK\Scripts\Utilities\VRTK_Simulator.cs" Line="85" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
