@@ -78,9 +78,9 @@ public class MouseManager : MonoBehaviour {
     void MouseOver_Hex(GameObject ourHitObject){
 		//Debug.Log (count);
 		//count++;
-		//Debug.Log("Raycast hit: " + ourHitObject.name);
+		Debug.Log("Raycast hit: " + ourHitObject.name);
         MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer>();
-
+		mr.material.color = Color.red;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -116,7 +116,7 @@ public class MouseManager : MonoBehaviour {
 
     void MouseOver_Unit(GameObject ourHitObject)
     {
-        //Debug.Log("Raycast hit: " + ourHitObject.name);
+        Debug.Log("Raycast hit: " + ourHitObject.name);
 
         if (Input.GetMouseButtonDown(0))
         {

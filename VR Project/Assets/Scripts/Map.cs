@@ -112,7 +112,7 @@ public class Map : MonoBehaviour {
 		// Run the game until the Escape key is pressed.
 		if (Energy < 0){
 			updateBoard();
-			Energy = 100;
+			Energy = 10000;
 		}
 		paintTiles ();
 		gatherResource ();
@@ -127,22 +127,23 @@ public class Map : MonoBehaviour {
 			for (int y = 0; y < height; y++) {
 				if (map [x, y] == "Stable") {
 					if (mapType [x, y] == 2) {
-						Debug.Log (x + "," + y + ": FOOD");
+						//Debug.Log (x + "," + y + ": FOOD");
 						Food += 10;
-						Debug.Log ("Current Food: "+Food);
-						Energy -= 5;
-					}
-					else if (mapType [x, y] == 3) {
-						Debug.Log (x + "," + y + ": WOOD");
+						//Debug.Log ("Current Food: "+Food);
+						Energy -= 1;
+					} else if (mapType [x, y] == 3) {
+						//Debug.Log (x + "," + y + ": WOOD");
 						Wood += 10;
-						Debug.Log ("Current Wood: "+Wood);
-						Energy -= 5;
-					} 
-					else if (mapType [x, y] == 4) {
-						Debug.Log (x + "," + y + ": Minerals");
+						//Debug.Log ("Current Wood: "+Wood);
+						Energy -= 1;
+					} else if (mapType [x, y] == 4) {
+						//Debug.Log (x + "," + y + ": Minerals");
 						Minerals += 10;
-						Debug.Log ("Current Minerals: " + Minerals);
-						Energy -= 5;
+						//Debug.Log ("Current Minerals: " + Minerals);
+						Energy -= 1;
+					} else if (mapType [x, y] == 0) {
+						Water += 10;
+						Energy -= 1;
 					}
                     updateEnergy();
                 }
@@ -152,7 +153,7 @@ public class Map : MonoBehaviour {
 
     public void updateEnergy()
     {
-        Debug.Log("ENERGY: " + EnergySlider.value);
+        //Debug.Log("ENERGY: " + EnergySlider.value);
         this.EnergySlider.value = this.Energy;
     }
 
