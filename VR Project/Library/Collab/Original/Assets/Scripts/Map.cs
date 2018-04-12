@@ -26,10 +26,6 @@ public class Map : MonoBehaviour {
 	public GameObject forestPreFab;
 	public GameObject sheepPreFab;
 	public GameObject loggingPreFab;
-	public GameObject portPreFab;
-	public GameObject nuclearPreFab;
-	public GameObject farmPreFab;
-	public GameObject factoryPreFab;
 	public GameObject popUpPreFab;
 
     //size in tiles of how big the board is
@@ -67,10 +63,6 @@ public class Map : MonoBehaviour {
 	// states are either polluted or stable
 	public static Status[,] map;
 
-	// array of all popups with x,y values
-	public static GameObject[,] pops = new GameObject[width,height];
-
-
 	private static bool loopEdges = false;
 
     #region Initialization
@@ -89,15 +81,11 @@ public class Map : MonoBehaviour {
 				GameObject hex_go = (GameObject)Instantiate(hexPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
                 var createdHex = hex_go.GetComponent<Hex>();
 
-
                 GameObject pop_go = Instantiate(popUpPreFab, new Vector3(xPos, 0, y * ZOffset), Quaternion.identity);
                 pop_go.name = "Pop_" + x + "_" + y;
-				pops [x, y] = pop_go;
-
-				var createdPopUp = pop_go.GetComponent<PopUp>();
+                var createdPopUp = pop_go.GetComponent<PopUp>();
                 var group = createdPopUp.GetComponent<CanvasGroup>();
-                
-				group.alpha = 0f;
+                group.alpha = 0f;
                 group.interactable = false;
                 group.blocksRaycasts = false;
 
@@ -303,10 +291,10 @@ public class Map : MonoBehaviour {
         this.MineralsCount.text = this.Minerals.ToString();
         this.PeopleCount.text = this.People.ToString();
         this.TurnCount.text = this.Turn.ToString();
-		RenderSettings.skybox.SetFloat("_Blend", 0.01f*Mathf.Round(this.Energy));
+		RenderSettings.skybox.SetFloat("_Blend", Mathf.Lerp(((0.01f*Mathf.Round(this.Energy))-0.01f), (0.01f*Mathf.Round(this.Energy)), 0.0001f));
     }
 
-    #region Build on Tiles
+    #region Add Models/Build on Tiles
     public void MakeMountain(){
 		int count = 0;
 		while (count < MountainCount){
@@ -419,10 +407,8 @@ public class Map : MonoBehaviour {
             }
 		}
 	}
-	#endregion
 
-
-	#region Add to one random tile
+    
     public void MakeTree(){
 		bool run = true;
 		int count = 0;
@@ -459,6 +445,33 @@ public class Map : MonoBehaviour {
 			count++;
 		}
 	}
+
+	public void UpgradeWood(int x, int y){
+		float xPos = x * XOffset;
+		//Is the Row odd
+		if (y % 2 == 1) {
+			xPos += XOffset / 2f;
+		}
+		GameObject forest = GameObject.Find ("Forest_" + x + "_" + y);
+		Destroy (forest);
+		GameObject logging_go = (GameObject)Instantiate (loggingPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
+
+		logging_go.name = "Logging_" + x + "_" + y;
+		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+
+		mapType [x, y] = TileType.Logging;
+		map [x, y] = Status.Stable;
+		Energy -= 20;
+		GameObject hex_go = tiles[x, y];
+
+		var forestTile = hex_go.GetComponent<Hex>();
+		forestTile.type = TileType.Logging;
+		forestTile.status = Status.Stable;
+	}
+
+
+
+
 
 	public void MakeMine(){
 		bool run = true;
@@ -560,99 +573,6 @@ public class Map : MonoBehaviour {
 		}
 	}
     #endregion
-
-	#region Upgrade Stable tiles
-	public void UpgradeWood(int x, int y){
-		float xPos = x * XOffset;
-		//Is the Row odd
-		if (y % 2 == 1) {
-			xPos += XOffset / 2f;
-		}
-		GameObject forest = GameObject.Find ("Forest_" + x + "_" + y);
-		Destroy (forest);
-		GameObject logging_go = (GameObject)Instantiate (loggingPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
-
-		logging_go.name = "Logging_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
-
-		mapType [x, y] = TileType.Logging;
-		map [x, y] = Status.Stable;
-		Energy -= 20;
-		GameObject hex_go = tiles[x, y];
-
-		var forestTile = hex_go.GetComponent<Hex>();
-		forestTile.type = TileType.Logging;
-		forestTile.status = Status.Stable;
-	}
-	public void UpgradeWater(int x, int y){
-		float xPos = x * XOffset;
-		//Is the Row odd
-		if (y % 2 == 1) {
-			xPos += XOffset / 2f;
-		}
-
-		GameObject port_go = (GameObject)Instantiate (portPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
-
-		port_go.name = "Port_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
-
-		mapType [x, y] = TileType.Port;
-		map [x, y] = Status.Stable;
-		Energy -= 20;
-		GameObject hex_go = tiles[x, y];
-
-		var dockTile = hex_go.GetComponent<Hex>();
-		dockTile.type = TileType.Port;
-		dockTile.status = Status.Stable;
-	}
-
-	public void UpgradeSheep(int x, int y){
-		float xPos = x * XOffset;
-		//Is the Row odd
-		if (y % 2 == 1) {
-			xPos += XOffset / 2f;
-		}
-
-		GameObject sheep = GameObject.Find ("Sheep_" + x + "_" + y);
-		Destroy (sheep);
-		GameObject farm_go = (GameObject)Instantiate (farmPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
-		farm_go.name = "Farm_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
-
-		mapType [x, y] = TileType.Farm;
-		map [x, y] = Status.Stable;
-		Energy -= 20;
-		GameObject hex_go = tiles[x, y];
-
-		var dockTile = hex_go.GetComponent<Hex>();
-		dockTile.type = TileType.Farm;
-		dockTile.status = Status.Stable;
-	}
-
-	public void UpgradeMountain(int x, int y){
-		float xPos = x * XOffset;
-		//Is the Row odd
-		if (y % 2 == 1) {
-			xPos += XOffset / 2f;
-		}
-		GameObject mountain = GameObject.Find ("Mountain_" + x + "_" + y);
-		Destroy (mountain);
-
-		GameObject factory_go = (GameObject)Instantiate (factoryPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
-
-		factory_go.name = "Factory_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
-
-		mapType [x, y] = TileType.Factory;
-		map [x, y] = Status.Stable;
-		Energy -= 20;
-		GameObject hex_go = tiles[x, y];
-
-		var dockTile = hex_go.GetComponent<Hex>();
-		dockTile.type = TileType.Factory;
-		dockTile.status = Status.Stable;
-	}
-	#endregion
 
     #region Cleaning Specific Tile
     public void CleanWater(int x, int y)

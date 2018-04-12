@@ -108,7 +108,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AtmosphereThickness: 0.79
-    - _Blend: 4.99
+    - _Blend: 0.9996
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1

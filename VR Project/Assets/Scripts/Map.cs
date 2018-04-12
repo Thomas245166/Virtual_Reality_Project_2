@@ -19,19 +19,12 @@ public class Map : MonoBehaviour {
 	public int Energy = 100;
     public int People = 0;
     public int Cities = 0;
-
-	public GameObject hexPreFab;
-	public GameObject mountainPreFab;
-	public GameObject cityPreFab;
-	public GameObject forestPreFab;
-	public GameObject sheepPreFab;
-	public GameObject loggingPreFab;
-	public GameObject portPreFab;
-	public GameObject nuclearPreFab;
-	public GameObject farmPreFab;
-	public GameObject factoryPreFab;
-	public GameObject turbinePreFab;
-	public GameObject popUpPreFab;
+    
+	public GameObject hexPreFab, popUpPreFab, mountainPreFab, cityPreFab, forestPreFab, sheepPreFab, loggingPreFab, portPreFab, nuclearPreFab, farmPreFab, factoryPreFab, turbinePreFab;
+    public Texture grassTexture, darkWaterTexture, lightWaterTexture;
+    public Material grassMaterial, darkWaterMaterial, lightWaterMaterial;
+    public static Texture grassTexture2, darkWaterTexture2, lightWaterTexture2;
+    public static Material grassMaterial2, darkWaterMaterial2, lightWaterMaterial2;
 
     //size in tiles of how big the board is
     public static int width = 15;
@@ -74,6 +67,15 @@ public class Map : MonoBehaviour {
     #region Initialization
     // Use this for initialization
     void Start () {
+        // Testing - https://stackoverflow.com/questions/45901317/unity-add-material-to-game-object
+        grassMaterial2 = grassMaterial;
+        grassTexture2 = grassTexture;
+        darkWaterMaterial2 = darkWaterMaterial;
+        darkWaterTexture2 = darkWaterTexture;
+        lightWaterMaterial2 = lightWaterMaterial;
+        lightWaterTexture2 = lightWaterTexture;
+
+
         Debug.Log("Tile Number" + TileNum);
         Debug.Log("Sheep Count: " + SheepCount + "Wood Count: " + ForestCount + "Mineral Count: " + MountainCount + "City Count: " + CityCount);
         initializeRandomBoard();
@@ -107,14 +109,21 @@ public class Map : MonoBehaviour {
                 createdHex.x = x;
                 createdHex.y = y;
 				createdHex.status = map [x, y];
+
                 //meta info
                 hex_go.transform.SetParent(this.transform);
                 hex_go.isStatic = true;
 
-                //add click stuff - work in progress
+                //add click stuff
                 hex_go.AddComponent<BoxCollider>();
                 hex_go.GetComponent<BoxCollider>().isTrigger = true;
                 hex_go.AddComponent<EventTrigger>();
+
+                // make tiles pretty
+                //hex_go.AddComponent<Renderer>();
+                //var rend = hex_go.GetComponent<Renderer>();
+                //rend.material = grassMaterial;
+                //rend.material.mainTexture = grassTexture;
 
                 // add it to the array of tiles we have
                 tiles[x, y] = hex_go;
@@ -133,7 +142,9 @@ public class Map : MonoBehaviour {
                     mapType[x, y] = TileType.Land;
                     if (map[x, y] == Status.Stable)
                     {
-                        ColorHex.material.color = Color.green;
+                        //ColorHex.material.color = Color.green;
+                        ColorHex.material = grassMaterial;
+                        ColorHex.material.mainTexture = grassTexture;
                     }
                     if (map[x, y] == Status.Polluted)
                     {
@@ -147,10 +158,14 @@ public class Map : MonoBehaviour {
                     if (map[x, y] == Status.Stable)
                     {
                         ColorHex.material.color = Color.blue;
+                        //ColorHex.material = lightWaterMaterial;
+                        //ColorHex.material.mainTexture = lightWaterTexture;
                     }
                     if (map[x, y] == Status.Polluted)
                     {
                         ColorHex.material.color = Color.gray;
+                        //ColorHex.material = darkWaterMaterial;
+                        //ColorHex.material.mainTexture = darkWaterTexture;
                     }
                     //createdHex.popUp = Instantiate
                 }
@@ -222,7 +237,7 @@ public class Map : MonoBehaviour {
 					if (map [x, y] == Status.Stable) {
 						if (mapType [x, y] == TileType.Forest) {
 							//Debug.Log (x + "," + y + ": Minerals");
-							Wood += 1;
+							Wood += 2;
 							//Debug.Log ("Current Minerals: " + Minerals);
 						}
 					}
@@ -247,7 +262,7 @@ public class Map : MonoBehaviour {
 					if (map [x, y] == Status.Stable) {
 						if (mapType [x, y] == TileType.Mountain) {
 							//Debug.Log (x + "," + y + ": Minerals");
-							Minerals += 1;
+							Minerals += 2;
 							//Debug.Log ("Current Minerals: " + Minerals);
 						}
 					}
@@ -270,7 +285,7 @@ public class Map : MonoBehaviour {
 					if (map [x, y] == Status.Stable) {
 						if (mapType [x, y] == 0) {
 							//Debug.Log (x + "," + y + ": Minerals");
-							Water += 1;
+							Water += 2;
 							//Debug.Log ("Current Minerals: " + Minerals);
 						}
 					}
@@ -296,9 +311,8 @@ public class Map : MonoBehaviour {
 		if (map[x,y]== Status.Polluted){
 			switch(mapType[x,y])
 			{
-			default:
+				default:
 					Debug.Log ("NO UPGRADE METHOD");
-					Energy += 10;
 					break;
 
 				case TileType.Water:
@@ -307,27 +321,23 @@ public class Map : MonoBehaviour {
 
 				case TileType.Land:
 					Debug.Log ("NO RESOURCE TO GATHER");
-					Energy += 10;
 					break;
 
 				case TileType.Sheep:
 					Food += 50;
 					GameObject sheep = GameObject.Find ("Sheep_" + x + "_" + y);
 					Destroy (sheep);
-					mapType [x, y] = TileType.Land;
 					break;
 
 				case TileType.Forest:
 					Wood += 50;
 					GameObject forest = GameObject.Find ("Forest_" + x + "_" + y);
 					Destroy (forest);
-					mapType [x, y] = TileType.Land;
 					break;
 
 				case TileType.Mountain:
 					Minerals += 50;
 					GameObject mountain = GameObject.Find ("Mountain_" + x + "_" + y);
-					mapType [x, y] = TileType.Land;
 					Destroy (mountain);
 					break;
 			}
@@ -432,10 +442,11 @@ public class Map : MonoBehaviour {
 					xPos += XOffset / 2f;
 				}
 				GameObject city_go = (GameObject)Instantiate (cityPreFab, new Vector3 (xPos,(float).175 , y * ZOffset), Quaternion.identity);
-				//transform.localScale -= new Vector3 (0.1F, 0, 0);
-				//name
-				city_go.name = "City_" + x + "_" + y;
-				city_go.transform.localScale -= new Vector3 (0.3F, 0.3F, 0.3F);
+                city_go.transform.position -= new Vector3(0.0F, -.03F, .0F);
+                //name
+                city_go.name = "City_" + x + "_" + y;
+                city_go.transform.localScale -= new Vector3(0.17F, 0.17F, 0.17F);
+                
 				mapType [x, y] = TileType.City;
 				People += 10;
 				count += 1;
@@ -629,7 +640,7 @@ public class Map : MonoBehaviour {
 					People += 10;
 					Minerals -= 500;
 					Wood -= 500;
-					Energy -= 50;
+					Energy -= 100;
 					run = false;
 
                     Cities += 1;
@@ -657,9 +668,11 @@ public class Map : MonoBehaviour {
 		GameObject logging_go = (GameObject)Instantiate (loggingPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
 
 		logging_go.name = "Logging_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+        logging_go.transform.localScale -= new Vector3(0.35F, 0.35F, 0.35F);
+        logging_go.transform.position -= new Vector3(0.3F, -0.05F, -.0F);
+        logging_go.transform.Rotate(0F, 180F, 0F);
 
-		mapType [x, y] = TileType.Logging;
+        mapType [x, y] = TileType.Logging;
 		map [x, y] = Status.Stable;
 		Energy -= 20;
 		GameObject hex_go = tiles[x, y];
@@ -678,9 +691,11 @@ public class Map : MonoBehaviour {
 		GameObject port_go = (GameObject)Instantiate (portPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
 
 		port_go.name = "Port_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+        port_go.transform.localScale -= new Vector3(0.3F, 0.3F, 0.3F);
+        port_go.transform.position -= new Vector3(0.0F, .4F, -.005F);
+        port_go.transform.Rotate(0F, 180F, 0F);
 
-		mapType [x, y] = TileType.Port;
+        mapType [x, y] = TileType.Port;
 		map [x, y] = Status.Stable;
 		Energy -= 20;
 		GameObject hex_go = tiles[x, y];
@@ -701,9 +716,11 @@ public class Map : MonoBehaviour {
 		Destroy (sheep);
 		GameObject farm_go = (GameObject)Instantiate (farmPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
 		farm_go.name = "Farm_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+        farm_go.transform.localScale -= new Vector3(-0.1F, -0.1F, -0.1F);
+        farm_go.transform.position -= new Vector3(0.0F, -.05F, .0F);
+        farm_go.transform.Rotate(0F, 180F, 0F);
 
-		mapType [x, y] = TileType.Farm;
+        mapType [x, y] = TileType.Farm;
 		map [x, y] = Status.Stable;
 		Energy -= 20;
 		GameObject hex_go = tiles[x, y];
@@ -725,9 +742,11 @@ public class Map : MonoBehaviour {
 		GameObject factory_go = (GameObject)Instantiate (factoryPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
 
 		factory_go.name = "Factory_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+        factory_go.transform.localScale -= new Vector3(-.4F, -.4F, -.4F);
+        factory_go.transform.position -= new Vector3(0.0F, -.05F, .0F);
+        factory_go.transform.Rotate(0F, 180F, 0F);
 
-		mapType [x, y] = TileType.Factory;
+        mapType [x, y] = TileType.Factory;
 		map [x, y] = Status.Stable;
 		Energy -= 20;
 		GameObject hex_go = tiles[x, y];
@@ -747,9 +766,10 @@ public class Map : MonoBehaviour {
 		GameObject turbine_go = (GameObject)Instantiate (turbinePreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
 
 		turbine_go.name = "Turbine_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+        turbine_go.transform.localScale -= new Vector3(0.3F, 0.3F, 0.3F);
+        turbine_go.transform.Rotate(0F, 180F, 0F);
 
-		mapType [x, y] = TileType.Turbine;
+        mapType [x, y] = TileType.Turbine;
 		map [x, y] = Status.Stable;
 		map [x+1, y] = Status.Stable;
 		map [x-1, y] = Status.Stable;
@@ -782,9 +802,11 @@ public class Map : MonoBehaviour {
 		GameObject nuclear_go = (GameObject)Instantiate (nuclearPreFab, new Vector3 (xPos, 0, y * ZOffset), Quaternion.identity);
 
 		nuclear_go.name = "Nuclear_" + x + "_" + y;
-		//forest_go.transform.localScale -= new Vector3 (0.6F, 0.6F, 0.6F);
+		nuclear_go.transform.localScale -= new Vector3 (0.35F, 0.35F, 0.35F);
+        nuclear_go.transform.position -= new Vector3(0.8F, -0.05F, -.35F);
+        nuclear_go.transform.Rotate (0F, 90F, 0F);
 
-		mapType [x, y] = TileType.Nuclear;
+        mapType [x, y] = TileType.Nuclear;
 		map [x, y] = Status.Polluted;
 		map [x+1, y] = Status.Polluted;
 		map [x-1, y] = Status.Polluted;
@@ -978,20 +1000,28 @@ public class Map : MonoBehaviour {
                 if (1 < x && x < (width - 2) && 1 < y && y < (height - 2))
                 {
                     if (map [x, y] == Status.Stable) {
-						ColorHex.material.color = Color.green;
-					}
+                        ColorHex.material.color = Color.green;
+                        //ColorHex.material = Resources.Load<Material>("Materials/GrassM");
+                        //ColorHex.material.mainTexture = Resources.Load<Texture2D>("Textures/Grass");
+                    }
 					if (map [x, y] == Status.Polluted) {
 						ColorHex.material.color = Color.yellow;
 					}
 				}
 				else {
-					if (map [x, y] == Status.Stable) {
-						ColorHex.material.color = Color.blue;
-					}
-					if (map [x, y] == Status.Polluted) {
-						ColorHex.material.color = Color.grey;
-					}
-				}
+                    if (map[x, y] == Status.Stable)
+                    {
+                        ColorHex.material.color = Color.blue;
+                        //ColorHex.material = lightWaterMaterial2;
+                        //ColorHex.material.mainTexture = lightWaterTexture2;
+                    }
+                    if (map[x, y] == Status.Polluted)
+                    {
+                        ColorHex.material.color = Color.gray;
+                        //ColorHex.material = darkWaterMaterial2;
+                        //ColorHex.material.mainTexture = darkWaterTexture2;
+                    }
+                }
 			}
 		}
 	}

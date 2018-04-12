@@ -37,6 +37,7 @@ public class Hex : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData)
     {
+		
         switch(type)
         {
             default:
@@ -51,6 +52,14 @@ public class Hex : MonoBehaviour, IPointerClickHandler {
 				Debug.Log ("Water Hex at (" + x + "," + y + "), " + status.ToString ());
 				pop = GameObject.Find ("Popup");
 				pop.transform.position = new Vector3 (x, 3, y);
+                //if (clickx < 4)
+                //{
+                //    pop.transform.Rotate(0, -45, 0);
+                //}
+                //else if (clickx > 7)
+                //{
+                //    pop.transform.Rotate(0, 45, 0);
+                //}
                 break;
 
             case TileType.Land:
@@ -111,10 +120,10 @@ public class Hex : MonoBehaviour, IPointerClickHandler {
         }
     }
 
-    void OnGUI()
-    {
-        var position = Camera.main.WorldToScreenPoint(new Vector3(x,0,y));
-    }
+    //void OnGUI()
+    //{
+    //    var position = Camera.main.WorldToScreenPoint(new Vector3(x,0,y));
+    //}
 
     public override string ToString()
     {
@@ -122,41 +131,42 @@ public class Hex : MonoBehaviour, IPointerClickHandler {
     }
 
 	public void Clean(){
-		switch(clicktile)
-		{
-		default:
-			Debug.Log ("NO CLEAN METHOD");
-			break;
+		if (map.Energy >= 10) {
+			switch (clicktile) {
+			default:
+				Debug.Log ("NO CLEAN METHOD");
+				break;
 
-		case TileType.Water:
-			Debug.Log ("Water Hex at (" + clickx + "," + clicky + "), " + status.ToString());
-			map.CleanWater(clickx,clicky);
-			break;
+			case TileType.Water:
+				Debug.Log ("Water Hex at (" + clickx + "," + clicky + "), " + status.ToString ());
+				map.CleanWater (clickx, clicky);
+				break;
 
-		case TileType.Land:
-			Debug.Log("Land Hex at (" + x + "," + y + "), " + status.ToString());
-			map.CleanLand(clickx, clicky);
-			break;
+			case TileType.Land:
+				Debug.Log ("Land Hex at (" + x + "," + y + "), " + status.ToString ());
+				map.CleanLand (clickx, clicky);
+				break;
 
-		case TileType.Sheep:
-			Debug.Log ("Sheep Hex at (" + x + "," + y + "), " + status.ToString ());
-			map.CleanFood(clickx, clicky);
-			break;
+			case TileType.Sheep:
+				Debug.Log ("Sheep Hex at (" + x + "," + y + "), " + status.ToString ());
+				map.CleanFood (clickx, clicky);
+				break;
 
-		case TileType.Forest:
-			Debug.Log ("Forest Hex at (" + x + "," + y + "), " + status.ToString ());
-			map.CleanWood (clickx, clicky);
-			break;
+			case TileType.Forest:
+				Debug.Log ("Forest Hex at (" + x + "," + y + "), " + status.ToString ());
+				map.CleanWood (clickx, clicky);
+				break;
 
-		case TileType.Mountain:
-			Debug.Log("Mountain Hex at (" + x + "," + y + "), " + status.ToString());
-			map.CleanMineral(clickx, clicky);
-			break;
+			case TileType.Mountain:
+				Debug.Log ("Mountain Hex at (" + x + "," + y + "), " + status.ToString ());
+				map.CleanMineral (clickx, clicky);
+				break;
 
-		case TileType.City:
-			Debug.Log("City Hex at (" + x + "," + y + "), " + status.ToString());
-			map.CleanCity(clickx, clicky);
-			break;
+			case TileType.City:
+				Debug.Log ("City Hex at (" + x + "," + y + "), " + status.ToString ());
+				map.CleanCity (clickx, clicky);
+				break;
+			}
 		}
 	}
 

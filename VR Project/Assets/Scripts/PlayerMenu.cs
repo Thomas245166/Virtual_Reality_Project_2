@@ -75,25 +75,25 @@ public class PlayerMenu : MonoBehaviour {
 	}
 
     public void CleanForest() {
-		if (map.Energy >=5) {
+		if (map.Energy >=10) {
 			map.CleanWood ();
 		}
     }
 
     public void CleanFood() {
-		if (map.Energy >=5) {
+		if (map.Energy >=10) {
 			map.CleanFood ();
 		}
     }
 
     public void CleanWater() {
-		if (map.Energy >=5) {
+		if (map.Energy >=10) {
 			map.CleanWater ();
 		}
 	}
 
     public void CleanMineral() {
-		if (map.Energy >=5) {
+		if (map.Energy >=10) {
 			map.CleanMineral ();
 		}
     }
