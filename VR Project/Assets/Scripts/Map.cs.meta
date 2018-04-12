@@ -16,6 +16,18 @@ MonoImporter:
       type: 2}
   - sheepPreFab: {fileID: 1224947747635826, guid: 35053256bd46bb541b8385ccc0d67904,
       type: 2}
+  - loggingPreFab: {fileID: 1953865106694126, guid: 975f26031c6f6c54983007e3dfbdbda9,
+      type: 2}
+  - portPreFab: {fileID: 1953865106694126, guid: 975f26031c6f6c54983007e3dfbdbda9,
+      type: 2}
+  - popUpPreFab: {instanceID: 0}
+  - EnergySlider: {instanceID: 0}
+  - EnergyAmount: {instanceID: 0}
+  - FoodCount: {instanceID: 0}
+  - MineralsCount: {instanceID: 0}
+  - WoodCount: {instanceID: 0}
+  - PeopleCount: {instanceID: 0}
+  - TurnCount: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
