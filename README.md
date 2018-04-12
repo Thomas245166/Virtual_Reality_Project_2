@@ -44,7 +44,7 @@ Have your people count drop to zero or below
 ### Water
 * Gather 10 water
 #### [Port Upgrade](https://poly.google.com/view/bzRjbJ74JCr)
-![alt text](Mock%20Ups/Assets%20Picture/City.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Port.png)
 * Port Upgrade cost 200 Wood and 200 Minerals
 * Plus 20 water per gather
 ### Land
