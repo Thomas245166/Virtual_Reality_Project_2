@@ -1,6 +1,6 @@
 # Virtual Reality Project 2
 Team: Thomas Sanchez, Megan Taylor, Andrew Im, Cody Otterbine
-
+# [Video](https://www.youtube.com/watch?v=dRlu8d9nerQ&feature=youtu.be)
 # Eco Island
 Eco island is a turn based resource management game. The player has a third person view over a small island with a certain manageable number of resources where every turn certain consequences happen that pollute the environment and reduces the resources. You may also click and gather resources from the map. The map will either remove the model from the map if tile is polluted or pollute the tile if it is  stable.   
 
