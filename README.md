@@ -100,3 +100,8 @@ Created by Cody to demonstrate the general map design and the perspective of the
 ![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Mock%20Up.png)
 ## Blendr Mock Up
 Created by Andrew in Blendr based on Cody's Design, Adpoted a grid tile pattern to demonstrate the limited space and resources
+
+## Final implementation
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Scene.jpg)
+
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Game.jpg)
