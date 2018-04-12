@@ -102,6 +102,11 @@ Created by Cody to demonstrate the general map design and the perspective of the
 Created by Andrew in Blendr based on Cody's Design. We adopted a grid tile pattern to demonstrate the limited space and resources.
 
 ## Final Implementation
+
+![alt text](Mock%20Ups/menu%20vr.JPG)
+
+![alt text](Mock%20Ups/how%20to%20play%20vr.JPG)
+
 ![alt text](Mock%20Ups/Game%20View.png)
 
 ![alt text](Mock%20Ups/SceneView.png)
