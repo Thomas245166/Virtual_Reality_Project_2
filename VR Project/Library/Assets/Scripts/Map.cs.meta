@@ -1,0 +1,46 @@
+fileFormatVersion: 2
+guid: 7ac2b100f4dfda349b6668a24dc1a511
+timeCreated: 1522624668
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hexPreFab: {fileID: 1747970835890894, guid: 7d9f49eaaeae82d43b01f82a323dd3f4,
+      type: 2}
+  - popUpPreFab: {instanceID: 0}
+  - mountainPreFab: {fileID: 1630430243493334, guid: 25bdab09dcc30a84980f4e0a407ba453,
+      type: 2}
+  - cityPreFab: {fileID: 1302606314056240, guid: 7710603b94a43ae4da7ea3e7e8128114,
+      type: 2}
+  - forestPreFab: {fileID: 1656609600142034, guid: 295ff6330d07e7a489a42d697dabf34d,
+      type: 2}
+  - sheepPreFab: {fileID: 1224947747635826, guid: 35053256bd46bb541b8385ccc0d67904,
+      type: 2}
+  - loggingPreFab: {fileID: 1953865106694126, guid: 975f26031c6f6c54983007e3dfbdbda9,
+      type: 2}
+  - portPreFab: {fileID: 1953865106694126, guid: 975f26031c6f6c54983007e3dfbdbda9,
+      type: 2}
+  - nuclearPreFab: {instanceID: 0}
+  - farmPreFab: {instanceID: 0}
+  - factoryPreFab: {instanceID: 0}
+  - turbinePreFab: {instanceID: 0}
+  - grassTexture: {instanceID: 0}
+  - darkWaterTexture: {fileID: 2800000, guid: 9db26ebe8235b5e42924bb2c54ad0c80, type: 3}
+  - lightWaterTexture: {fileID: 2800000, guid: 88f76f18520011749b20fb0977ee6c3b, type: 3}
+  - grassMaterial: {fileID: 2100000, guid: 11729fa27a679db4fbeedeff9e7512fe, type: 2}
+  - darkWaterMaterial: {fileID: 2100000, guid: a0eee71c237788a438b0d7ed7c54bd70, type: 2}
+  - lightWaterMaterial: {fileID: 2100000, guid: b1330607e1a57fe4f81ce608223e2d85,
+      type: 2}
+  - EnergySlider: {instanceID: 0}
+  - EnergyAmount: {instanceID: 0}
+  - FoodCount: {instanceID: 0}
+  - MineralsCount: {instanceID: 0}
+  - WoodCount: {instanceID: 0}
+  - PeopleCount: {instanceID: 0}
+  - TurnCount: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
