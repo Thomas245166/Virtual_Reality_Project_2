@@ -104,4 +104,4 @@ Created by Andrew in Blendr based on Cody's Design, Adpoted a grid tile pattern 
 ## Final implementation
 ![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Game%20View.png)
 
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Game.JPG)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/SceneView.png)
