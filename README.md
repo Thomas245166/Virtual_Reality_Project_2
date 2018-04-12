@@ -44,32 +44,32 @@ Have your people count drop to zero or below
 ### Water
 * Gather 10 water
 #### Port Upgrade
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/City.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/City.png)
 * Port Upgrade cost 200 Wood and 200 Minerals
 * Plus 20 water per gather
 ### Land
 
 #### Sheep
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/Sheep.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Sheep.png)
 * Gather 10 food
 ##### Farm Upgrade
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/Farm.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Farm.png)
 * Farm Upgrade cost 200 wood and 200 minerals
 * Plus 20 food per gather
 
 #### Minerals
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/Mountain.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Mountain.png)
 * Gather 10 minerals 
 ##### Factory Upgrade
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/Factory.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Factory.png)
 * Farm Upgrade cost 200 wood and 200 mineals
 * Plus 20 minerals per gather
 
 #### Forest
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/Forest.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Forest.png)
 * Gather 10 Wood
 ##### Logging Mill Upgrade
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/Log%Mill.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Log%Mill.png)
 * Logging Mill Upgrade cost 200 wood and 200 minerals
 * plus 20 to wood per gather
 
@@ -78,16 +78,16 @@ Have your people count drop to zero or below
 
 ## Upgrades
 #### Cites
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/City.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/City.png)
 * increases Population, necessary for win
 * Cost 500 wood and 500 minerals
 #### Windmill
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/WindTurbine.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/WindTurbine.png)
 * Energy Producer, plus 50 Energy per turn
 * Cost 400 minerals and 400 wood
 * Makes all near by tiles clean
 ##### Nuclear Upgrade
-![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%Picture/Nuclear%Plant.png)
+![alt text](https://github.com/Thomas245166/Virtual_Reality_Project_2/blob/master/Mock%20Ups/Assets%20Picture/Nuclear%Plant.png)
 * Energy Producer, plus 75 Energy per turn
 * Cost 500 minerals and 500 wood
 * Makes all near by tiles polluted 
