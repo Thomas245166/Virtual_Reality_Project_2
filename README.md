@@ -43,32 +43,32 @@ Have your people count drop to zero or below
 
 ### Water
 * Gather 10 water
-#### Port Upgrade
+#### [Port Upgrade](https://poly.google.com/view/bzRjbJ74JCr)
 ![alt text](Mock%20Ups/Assets%20Picture/City.png)
 * Port Upgrade cost 200 Wood and 200 Minerals
 * Plus 20 water per gather
 ### Land
 
-#### Sheep
+#### [Sheep](https://poly.google.com/view/aWFQcDSaDyo)
 ![alt text](Mock%20Ups/Assets%20Picture/Sheep.png)
 * Gather 10 food
-##### Farm Upgrade
+##### [Farm Upgrade](https://poly.google.com/view/dSsUaUlaxHk)
 ![alt text](Mock%20Ups/Assets%20Picture/Farm.png)
 * Farm Upgrade cost 200 wood and 200 minerals
 * Plus 20 food per gather
 
-#### Minerals
+#### [Minerals](https://poly.google.com/view/0Fl55ZzsVzT)
 ![alt text](Mock%20Ups/Assets%20Picture/Mountain.png)
 * Gather 10 minerals 
-##### Factory Upgrade
+##### [Factory Upgrade](https://poly.google.com/view/fCiJW5Qdgbf)
 ![alt text](Mock%20Ups/Assets%20Picture/Factory.png)
 * Farm Upgrade cost 200 wood and 200 mineals
 * Plus 20 minerals per gather
 
-#### Forest
+#### [Forest](https://poly.google.com/view/2_fv3tn3NG_)
 ![alt text](Mock%20Ups/Assets%20Picture/Forest.png)
 * Gather 10 Wood
-##### Logging Mill Upgrade
+##### [Logging](https://poly.google.com/view/dTSrDa0oz0a) [Mill Upgrade](https://poly.google.com/view/ctIRaIM3zXu)
 ![alt text](Mock%20Ups/Assets%20Picture/Log%20Mill.png)
 * Logging Mill Upgrade cost 200 wood and 200 minerals
 * plus 20 to wood per gather
@@ -77,11 +77,11 @@ Have your people count drop to zero or below
 * Blank tiles can converted into any of the
 
 ## Upgrades
-#### Cites
+#### [Cites](https://poly.google.com/view/6sBXNsb9CFH)
 ![alt text](Mock%20Ups/Assets%20Picture/City.png)
 * increases Population, necessary for win
 * Cost 500 wood and 500 minerals
-#### Windmill
+#### [Wind Turbine](https://poly.google.com/view/8Tke6WIyZtg)
 ![alt text](Mock%20Ups/Assets%20Picture/WindTurbine.png)
 * Energy Producer, plus 50 Energy per turn
 * Cost 400 minerals and 400 wood
